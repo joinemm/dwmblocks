@@ -17,6 +17,7 @@ static const Block blocks[] = {
 #ifdef DESKTOP_BAR
 static const Block blocks[] = {
 	/*Icon	/Command				/Update Interval	/Update Signal */
+    {" ",  "rode-volume",                                                  1,  4},
     {" ",	"echo \"$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)\"", 1,  1},
 	{" ",	"status-cpu",                                                   1,  2},
 	{" ",	"printf \"%s\" \"$(date '+%b %d (%a) %H:%M:%S') \"",            1,  3},
