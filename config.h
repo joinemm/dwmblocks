@@ -1,26 +1,28 @@
 //Modify this file to change what commands output to your statusbar, and recompile using the make command.
 
-#ifdef LAPTOP_BAR
+#ifdef laptop
 static const Block blocks[] = {
-	/*Icon	/Command				/Update Interval	/Update Signal */
-    {" ",	"echo \"$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)\"", 1,  1},
-	{" ",	"status-cpu",                                                   1,  2},
-	{"",	"status-volume",		                                        60, 10},
-	{" ",	"light | xargs printf '%.0f\n'",                                60,	11},
-	{" ",	"acpi -b | cut -f 2 -d ',' | sed -r 's/( )+//g'",               10, 5},
-	{"",	"status-bt",                                                    60, 12},
-	{"",	"status-wifi",                                                  5,  4},
-	{" ",	"printf \"%s\" \"$(date '+%b %d (%a) %H:%M:%S') \"",            1,  3},
+	/*Icon	/Command				            /Interval   /Update Signal */
+	{" ",	"free -h | awk '/^Mem/ {print $3}'",1,          1},
+	{" ",	"status-cpu",                       1,          1},
+	{"",	"status-volume",                    30,         10},
+	{" ",	"light -r",                         30,         11},
+    {"",	"status-battery",                   1,          1},
+	{"",	"status-bt",                        30,         12},
+	{"",	"status-wifi",                      1,          14},
+	{"",	"status-layout",                    1,          13},
+	{" ",	"date '+%b %d (%a) %H:%M:%S'",      1,          1},
 };
 #endif
 
-#ifdef DESKTOP_BAR
+#ifdef desktop
 static const Block blocks[] = {
-	/*Icon	/Command				/Update Interval	/Update Signal */
-    {" ",  "rode-volume",                                                  1,  4},
-    {" ",	"echo \"$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)\"", 1,  1},
-	{" ",	"status-cpu",                                                   1,  2},
-	{" ",	"printf \"%s\" \"$(date '+%b %d (%a) %H:%M:%S') \"",            1,  3},
+	/*Icon	/Command				            /Interval	/Update Signal */
+    {" ",  "status-mic-volume",                1,          1},
+    {" ",	"free -h | awk '/^Mem/ {print $3}'",1,          1},
+	{" ",	"status-cpu",                       1,          1},
+	{"",	"status-layout",                    1,          13},
+	{" ",	"date '+%b %d (%a) %H:%M:%S'",      1,          1},
 };
 #endif
 
