@@ -1,18 +1,11 @@
 .POSIX:
 
-HOSTNAME=$(shell hostname)
-
-ifeq ($(HOSTNAME), arch720s)
-    VERSION=LAPTOP_BAR
-else
-	VERSION=DESKTOP_BAR
-endif
-
-$(info $(HOSTNAME))
-$(info $(ANY_VAR))
-
 PREFIX = /usr/local
+
+VERSION=laptop
 CC = gcc -D$(VERSION)
+
+$(info $(CC))
 
 dwmblocks: dwmblocks.o
 	$(CC) dwmblocks.o -lX11 -o dwmblocks
@@ -27,4 +20,4 @@ install: dwmblocks
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/dwmblocks
 
-.PHONY: clean install uninstall
+.PHONY: clean install uninstall laptop
