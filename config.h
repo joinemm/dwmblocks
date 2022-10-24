@@ -8,7 +8,7 @@ static const Block blocks[] = {
 	{"",	"status-volume",                    30,         10},
 	{" ",	"light -r",                         30,         11},
     {"",	"status-battery",                   1,          3},
-	{"",	"status-bt",                        30,         12},
+	{"",	"rofi-bluetooth --status",          30,         12},
 	{"",	"status-wifi",                      1,          14},
 	{"",	"status-layout",                    1,          13},
 	{" ",	"status-date",						1,          4},
