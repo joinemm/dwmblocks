@@ -6,7 +6,7 @@ static const Block blocks[] = {
 	{" ",	"free -h | awk '/^Mem/ {print $3}'",1,          1},
 	{" ",	"status-cpu",                       1,          2},
 	{"",	"status-volume",                    30,         10},
-	{" ",	"light -r",                         30,         11},
+	{" ",	"light",                         30,         11},
     {"",	"status-battery",                   1,          3},
 	{"",	"rofi-bluetooth --status",          30,         12},
 	{"",	"status-wifi",                      1,          14},
