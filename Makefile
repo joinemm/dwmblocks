@@ -4,6 +4,7 @@ PREFIX = /usr/local
 
 VERSION = laptop
 CC = gcc -D$(VERSION)
+OUT = $(DESTDIR)$(PREFIX)
 
 $(info $(CC))
 
@@ -14,7 +15,6 @@ dwmblocks.o: dwmblocks.c config.h
 clean:
 	rm -f *.o *.gch dwmblocks
 install: dwmblocks
-	OUT=$(DESTDIR)$(PREFIX)
 	mkdir -p $(OUT)/bin
 	cp -f dwmblocks $(OUT)/bin/dwmblocks-bin
 	chmod 755 $(OUT)/bin/dwmblocks-bin
