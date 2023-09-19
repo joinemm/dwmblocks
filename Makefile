@@ -1,9 +1,8 @@
 .POSIX:
 
 PREFIX = /usr/local
-SCRIPTS_PREFIX = /opt
 
-VERSION=laptop
+VERSION = laptop
 CC = gcc -D$(VERSION)
 
 $(info $(CC))
@@ -15,19 +14,21 @@ dwmblocks.o: dwmblocks.c config.h
 clean:
 	rm -f *.o *.gch dwmblocks
 install: dwmblocks
-	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp -f dwmblocks $(DESTDIR)$(PREFIX)/bin/dwmblocks-raw
-	chmod 755 $(DESTDIR)$(PREFIX)/bin/dwmblocks-raw
+	OUT=$(DESTDIR)$(PREFIX)
+	mkdir -p $(OUT)/bin
+	cp -f dwmblocks $(OUT)/bin/dwmblocks-bin
+	chmod 755 $(OUT)/bin/dwmblocks-bin
 	# scripts
-	mkdir -p $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks
-	cp -rf scripts/* $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks/
-	chmod -R 755 $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks
-	# load path when launched
-	echo "#!/bin/sh" > $(DESTDIR)$(PREFIX)/bin/dwmblocks
-	echo "PATH=\$PATH:$(DESTDIR)$(SCRIPTS_PREFIX) $(DESTDIR)$(PREFIX)/bin/dwmblocks-raw" >> $(DESTDIR)$(PREFIX)/bin/dwmblocks
-	chmod 755 $(DESTDIR)$(PREFIX)/bin/dwmblocks
+	mkdir -p $(OUT)/share/dwmblocks
+	cp -rf scripts/* $(OUT)/share/dwmblocks
+	chmod -R 755 $(OUT)/share/dwmblocks
+	# create fake bin that loads share to the path
+	echo "#!/bin/sh" > $(OUT)/bin/dwmblocks
+	echo "PATH=$PATH:$(OUT)/share/dwmblocks $(OUT)/bin/dwmblocks-bin" >> $(OUT)/bin/dwmblocks
+	chmod 755 $(OUT)/bin/dwmblocks
 uninstall:
-	rm -f $(DESTDIR)$(PREFIX)/bin/dwmblocks
-	rm -rf $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks
+	rm -f $(OUT)/bin/dwmblocks
+	rm -f $(OUT)/bin/dwmblocks-bin
+	rm -rf $(OUT)/share/dwmblocks
 
 .PHONY: clean install uninstall laptop
