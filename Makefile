@@ -23,8 +23,8 @@ install: dwmblocks
 	cp -rf scripts/* $(OUT)/share/dwmblocks
 	chmod -R 755 $(OUT)/share/dwmblocks
 	# create fake bin that loads share to the path
-	echo "#!/bin/sh" > $(OUT)/bin/dwmblocks
-	echo "PATH=$PATH:$(OUT)/share/dwmblocks $(OUT)/bin/dwmblocks-bin" >> $(OUT)/bin/dwmblocks
+	create-path-runner $(OUT)/share/dwmblocks $(OUT)/bin/dwmblocks-bin
+	cp -f dwmblocks-with-path $(OUT)/bin/dwmblocks
 	chmod 755 $(OUT)/bin/dwmblocks
 uninstall:
 	rm -f $(OUT)/bin/dwmblocks
