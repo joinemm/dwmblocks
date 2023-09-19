@@ -3,13 +3,13 @@
 #ifdef laptop
 static const Block blocks[] = {
 	/*Icon	/Command				            /Interval   /Update Signal */
-	{"󰆼 ",	"free -h | awk '/^Mem/ {print $3}'",1,          1},
+	{"",	"status-wifi",                      1,          14},
+	{"",	"status-bt",						30,         12},
+	{"󰆼 ",	"status-memory",					1,          1},
 	{" ",	"status-cpu",                       1,          2},
 	{"",	"status-volume",                    30,         10},
-	{" ",	"light",                         30,         11},
+	{" ",	"status-backlight",					30,         11},
     {"",	"status-battery",                   1,          3},
-	{"",	"rofi-bluetooth --status",          30,         12},
-	{"",	"status-wifi",                      1,          14},
 	{"",	"status-layout",                    1,          13},
 	{"󰃭 ",	"status-date",						1,          4},
 };
@@ -18,15 +18,15 @@ static const Block blocks[] = {
 #ifdef desktop
 static const Block blocks[] = {
 	/*Icon	/Command				            /Interval	/Update Signal */
-    {" ",  "status-mic-volume",                1,          1},
+    {" ",  "status-mic-volume",                1,			1},
 	{"",	"status-volume",                    30,         10},
-    {"󰆼 ",	"free -h | awk '/^Mem/ {print $3}'",1,          2},
+    {"󰆼 ",	"status-memory",					1,          2},
 	{" ",	"status-cpu",                       1,          3},
-	{"",	"network-traffic",					1,          15},
+	{"",	"status-network-traffic",			1,          15},
 	{"",	"status-layout",                    1,          13},
 	{"󰃭 ",	"status-date",						1,          4},
 };
 #endif
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
-static char *delim = " / ";
+static char *delim = " | ";

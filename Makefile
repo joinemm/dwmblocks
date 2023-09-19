@@ -1,6 +1,7 @@
 .POSIX:
 
 PREFIX = /usr/local
+SCRIPTS_PREFIX = /opt
 
 VERSION=laptop
 CC = gcc -D$(VERSION)
@@ -17,7 +18,11 @@ install: dwmblocks
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp -f dwmblocks $(DESTDIR)$(PREFIX)/bin
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/dwmblocks
+	mkdir -p $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks
+	cp -rf scripts/* $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks/
+	chmod -R 755 $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/dwmblocks
+	rm -rf $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks
 
 .PHONY: clean install uninstall laptop

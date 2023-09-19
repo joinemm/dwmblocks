@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if pactl get-sink-mute @DEFAULT_SINK@ | grep -q "Mute: yes"; then
+	echo "󰖁"
+else
+	CURRENT="$(pactl get-sink-volume @DEFAULT_SINK@ | awk '/Volume/ {print $5}')"
+	echo "󰕾 ${CURRENT%}"
+fi
