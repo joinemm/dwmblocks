@@ -25,6 +25,7 @@ install: dwmblocks
 	# load path when launched
 	echo "#!/bin/sh" > $(DESTDIR)$(PREFIX)/bin/dwmblocks
 	echo "PATH=\$PATH:$(DESTDIR)$(SCRIPTS_PREFIX) $(DESTDIR)$(PREFIX)/bin/dwmblocks-raw" >> $(DESTDIR)$(PREFIX)/bin/dwmblocks
+	chmod 755 $(DESTDIR)$(PREFIX)/bin/dwmblocks
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/dwmblocks
 	rm -rf $(DESTDIR)$(SCRIPTS_PREFIX)/dwmblocks
