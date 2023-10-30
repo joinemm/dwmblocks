@@ -28,7 +28,7 @@ install: dwmblocks
 	chmod 755 $(OUT)/bin/dwmblocks-wrapped
 uninstall:
 	rm -f $(OUT)/bin/dwmblocks
-	rm -f $(OUT)/bin/dwmblocks-bin
+	rm -f $(OUT)/bin/dwmblocks-wrapped
 	rm -rf $(OUT)/share/dwmblocks
 
 .PHONY: clean install uninstall laptop
