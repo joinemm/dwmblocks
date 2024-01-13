@@ -2,8 +2,7 @@
 
 PREFIX = /usr/local
 
-VERSION = laptop
-CC = gcc -D$(VERSION)
+CC = gcc
 OUT = $(DESTDIR)$(PREFIX)
 
 $(info $(CC))
@@ -31,4 +30,4 @@ uninstall:
 	rm -f $(OUT)/bin/dwmblocks-wrapped
 	rm -rf $(OUT)/share/dwmblocks
 
-.PHONY: clean install uninstall laptop
+.PHONY: clean install uninstall

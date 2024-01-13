@@ -1,11 +1,19 @@
 #!/bin/sh
-SSID="$(iwgetid -r)"
-if [ "$SSID" != "" ]; then
-	echo "󰖩 $SSID"
+
+WIFI_STATUS=$(cat /sys/class/net/w*/operstate)
+ETHERNET_STATUS=$(cat /sys/class/net/e*/operstate)
+
+if [ "$WIFI_STATUS" = "up" ]; then
+	SSID="$(iwgetid -r)"
+	if [ "$SSID" != "" ]; then
+		echo "󰖩 $SSID"
+	elif [ "$ETHERNET_STATUS" = "up" ]; then
+		echo ""
+	fi
 else
-    if rfkill -o TYPE,SOFT -nr | grep -q "wlan blocked"; then
-        echo "󱚼"
-    else
-        echo "󰖪"
-    fi
+	if rfkill -o TYPE,SOFT -nr | grep -q "wlan blocked"; then
+		echo "󱚼"
+	else
+		echo "󰖪"
+	fi
 fi
