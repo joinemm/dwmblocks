@@ -11,7 +11,6 @@ static const Block blocks[] = {
   {"",  "status-layout",            1,          13},
   {"󰃭 ",  "status-date",        1,          4},
 };
-#endif
 
 //sets delimeter between status commands. NULL character ('\0') means no delimeter.
 static char *delim = " | ";
