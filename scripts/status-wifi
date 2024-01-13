@@ -5,11 +5,9 @@ ETHERNET_STATUS=$(cat /sys/class/net/e*/operstate)
 
 if [ "$WIFI_STATUS" = "up" ]; then
 	SSID="$(iwgetid -r)"
-	if [ "$SSID" != "" ]; then
-		echo "󰖩 $SSID"
-	elif [ "$ETHERNET_STATUS" = "up" ]; then
-		echo ""
-	fi
+	echo "󰖩 $SSID"
+elif [ "$ETHERNET_STATUS" = "up" ]; then
+	echo ""
 else
 	if rfkill -o TYPE,SOFT -nr | grep -q "wlan blocked"; then
 		echo "󱚼"
